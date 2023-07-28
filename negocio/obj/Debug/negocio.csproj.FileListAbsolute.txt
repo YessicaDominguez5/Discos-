@@ -1,0 +1,9 @@
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\bin\Debug\negocio.dll
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\bin\Debug\negocio.pdb
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\bin\Debug\dominio.dll
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\bin\Debug\dominio.pdb
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\obj\Debug\negocio.csproj.AssemblyReference.cache
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\obj\Debug\negocio.csproj.CoreCompileInputs.cache
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\obj\Debug\negocio.csproj.CopyComplete
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\obj\Debug\negocio.dll
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\negocio\obj\Debug\negocio.pdb

@@ -1,0 +1,5 @@
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\obj\Debug\Disco.csproj.AssemblyReference.cache
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\obj\Debug\Disco.csproj.SuggestedBindingRedirects.cache
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\obj\Debug\Discos.Properties.Resources.resources
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\obj\Debug\Disco.csproj.GenerateResource.cache
+C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\obj\Debug\Disco.csproj.CoreCompileInputs.cache

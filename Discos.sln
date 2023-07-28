@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DiscosMusicales", "Discos\DiscosMusicales.csproj", "{4D7268D6-2A57-4B64-8F8C-FA586E002012}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "dominio", "dominio\dominio.csproj", "{0830739F-3314-43B6-818C-FB6BA517ADA4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "negocio", "negocio\negocio.csproj", "{D7659E94-C78C-425B-8FEF-6C8235307418}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4D7268D6-2A57-4B64-8F8C-FA586E002012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D7268D6-2A57-4B64-8F8C-FA586E002012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D7268D6-2A57-4B64-8F8C-FA586E002012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D7268D6-2A57-4B64-8F8C-FA586E002012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0830739F-3314-43B6-818C-FB6BA517ADA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0830739F-3314-43B6-818C-FB6BA517ADA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0830739F-3314-43B6-818C-FB6BA517ADA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0830739F-3314-43B6-818C-FB6BA517ADA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7659E94-C78C-425B-8FEF-6C8235307418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7659E94-C78C-425B-8FEF-6C8235307418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7659E94-C78C-425B-8FEF-6C8235307418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7659E94-C78C-425B-8FEF-6C8235307418}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {79F68536-66D3-46CE-A915-A03E426D78BB}
+	EndGlobalSection
+EndGlobal
