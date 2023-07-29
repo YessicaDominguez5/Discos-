@@ -30,3 +30,4 @@ C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos
 C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\DiscosMusicales.csproj.CopyComplete
 C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos.exe
 C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos.pdb
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos.frmAltaDisco.resources

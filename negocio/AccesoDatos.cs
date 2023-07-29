@@ -50,9 +50,31 @@ namespace negocio
             }
         }
 
+        public void EjecutarAccion() //para el insert del setear consulta en el método Agregar, como es insert no se puede ejecutar lectura.
+        {
+            comando.Connection = conexion;
+            try
+            {
+                conexion.Open();
+                comando.ExecuteNonQuery();
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+
+
+        }
+
         public void CerrarConexion()
         {
-            if (lector != null) { lector.Close(); }
+            if (lector != null)
+            {
+                lector.Close();
+            }
 
             conexion.Close();
         }

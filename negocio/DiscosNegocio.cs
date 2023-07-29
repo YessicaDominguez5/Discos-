@@ -11,9 +11,9 @@ namespace negocio
 {
     public class DiscosNegocio
     {
-        public List<Disco> Listar() { 
-        
-        List<Disco> listaDiscos = new List<Disco>();
+        public List<Disco> Listar() {
+
+            List<Disco> listaDiscos = new List<Disco>();
 
             SqlConnection conexion = new SqlConnection();
             SqlCommand comando = new SqlCommand();
@@ -24,11 +24,11 @@ namespace negocio
                 conexion.ConnectionString = "server=.\\SQLEXPRESS;database=DISCOS_DB;integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
                 comando.CommandText = "select Titulo, FechaLanzamiento as 'Fecha de Lanzamiento', CantidadCanciones as 'Cantidad de Canciones', UrlImagenTapa, E.descripcion as Estilo, T.Descripcion as 'Tipo de Edición'  from DISCOS D, ESTILOS E, TIPOSEDICION T where IdEstilo = E.Id AND IdTipoEdicion =T.Id";
-                comando.Connection= conexion;
+                comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
 
-                while(lector.Read())
+                while (lector.Read())
                 {
                     Disco aux = new Disco();
                     aux.Titulo = (string)lector["Titulo"];
@@ -44,7 +44,7 @@ namespace negocio
                 }
 
                 conexion.Close();
-            return listaDiscos;
+                return listaDiscos;
             }
             catch (Exception ex)
             {
@@ -52,7 +52,35 @@ namespace negocio
                 throw;
             }
 
-       
+
         }
+
+        public void Agregar(Disco discoAAgregar)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            try
+            {
+                datos.SetearConsulta("insert into DISCOS(Titulo, FechaLanzamiento, CantidadCanciones) values ('"+ discoAAgregar.Titulo + "'," + "'" + discoAAgregar.FechaLanzamiento.ToString("yyyy-MM-dd hh:mm:ss") + "',"+ discoAAgregar.CantCanciones+")");
+                datos.EjecutarAccion();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+            finally
+            {
+                datos.CerrarConexion();
+            }
+
+        
+        } 
+
+        public void Modificar(Disco discoAmodificar) { }
     }
+
+
+         
+       
+    
 }

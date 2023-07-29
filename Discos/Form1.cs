@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using dominio;
+﻿using dominio;
 using negocio;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace Discos
 {
@@ -33,14 +27,14 @@ namespace Discos
         {
             Disco seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem; // De la grilla de discos en la fila actual guardar en Seleccionado el objeto enlazado
 
-            cargarImagen(seleccionado.UrlImagenTapa); 
+            cargarImagen(seleccionado.UrlImagenTapa);
         }
 
         private void cargarImagen(string imagen)
         {
             try
             {
-            pbImagen.Load(imagen); //va cambiando la imagen según el item seleccionado
+                pbImagen.Load(imagen); //va cambiando la imagen según el item seleccionado
 
             }
             catch (Exception)
@@ -49,6 +43,12 @@ namespace Discos
                 pbImagen.Load("http://www.carsaludable.com.ar/wp-content/uploads/2014/03/default-placeholder.png");
             }
 
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAltaDisco altaDisco = new frmAltaDisco();
+            altaDisco.ShowDialog();
         }
     }
 }
