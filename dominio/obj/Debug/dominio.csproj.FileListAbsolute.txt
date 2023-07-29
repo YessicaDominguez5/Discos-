@@ -4,3 +4,9 @@ C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\dominio\bin\Debug\dominio.dll
 C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\dominio\bin\Debug\dominio.pdb
 C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\dominio\obj\Debug\dominio.dll
 C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\dominio\obj\Debug\dominio.pdb
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\dominio\bin\Debug\dominio.dll
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\dominio\bin\Debug\dominio.pdb
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\dominio\obj\Debug\dominio.csproj.AssemblyReference.cache
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\dominio\obj\Debug\dominio.csproj.CoreCompileInputs.cache
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\dominio\obj\Debug\dominio.dll
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\dominio\obj\Debug\dominio.pdb

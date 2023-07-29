@@ -14,3 +14,19 @@ C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\bin\Debug\dominio.pdb
 C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\obj\Debug\DiscosMusicales.csproj.CopyComplete
 C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\bin\Debug\negocio.dll
 C:\Users\Yeppi\Documents\ej Curso C nivel 2\Discos\Discos\bin\Debug\negocio.pdb
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\bin\Debug\Discos.exe.config
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\bin\Debug\Discos.exe
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\bin\Debug\Discos.pdb
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\bin\Debug\dominio.dll
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\bin\Debug\negocio.dll
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\bin\Debug\dominio.pdb
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\bin\Debug\negocio.pdb
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\DiscosMusicales.csproj.AssemblyReference.cache
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\DiscosMusicales.csproj.SuggestedBindingRedirects.cache
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos.FormDiscos.resources
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos.Properties.Resources.resources
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\DiscosMusicales.csproj.GenerateResource.cache
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\DiscosMusicales.csproj.CoreCompileInputs.cache
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\DiscosMusicales.csproj.CopyComplete
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos.exe
+C:\Users\Juaniyeppi\Documents\MaxiProgramaNivel2\Discos-\Discos\obj\Debug\Discos.pdb
