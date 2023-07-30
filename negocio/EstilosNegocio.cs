@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace negocio
 {
-    internal class EstilosNegocio
+    public class EstilosNegocio
     {
         public List<Estilo> listar()
         {
@@ -22,7 +22,7 @@ namespace negocio
                 {
                     Estilo aux = new Estilo();
                     aux.IdEstilo = (int)datos.Lector["Id"];
-                    aux.DescripcionEstilo = (string)datos.Lector["Description"];
+                    aux.DescripcionEstilo = (string)datos.Lector["Descripcion"];
 
                     listaestilo.Add(aux);   
 

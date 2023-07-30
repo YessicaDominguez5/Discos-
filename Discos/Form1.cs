@@ -16,11 +16,7 @@ namespace Discos
 
         private void FormDiscos_Load(object sender, EventArgs e)
         {
-            DiscosNegocio negocio = new DiscosNegocio();
-            listaGuardadaDeDiscos = negocio.Listar();
-            dgvDiscos.DataSource = listaGuardadaDeDiscos;
-            dgvDiscos.Columns["UrlImagenTapa"].Visible = false;
-            cargarImagen(listaGuardadaDeDiscos[0].UrlImagenTapa); //imagen del primer elemento de la lista
+            Cargar();
         }
 
         private void dgvDiscos_SelectionChanged(object sender, EventArgs e)
@@ -44,11 +40,30 @@ namespace Discos
             }
 
         }
+        private void Cargar()
+        {
+            DiscosNegocio negocio = new DiscosNegocio();
+            try
+            {
+                listaGuardadaDeDiscos = negocio.Listar();
+                dgvDiscos.DataSource = listaGuardadaDeDiscos;
+                dgvDiscos.Columns["UrlImagenTapa"].Visible = false;
+                cargarImagen(listaGuardadaDeDiscos[0].UrlImagenTapa); //imagen del primer elemento de la lista
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+
+
+        }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             frmAltaDisco altaDisco = new frmAltaDisco();
             altaDisco.ShowDialog();
+            Cargar();
         }
     }
 }

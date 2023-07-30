@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Net.NetworkInformation;
 
 namespace negocio
 {
@@ -16,7 +17,7 @@ namespace negocio
         {
             get { return lector; }
         }
-        
+
         public AccesoDatos()//constructor
         {
 
@@ -24,7 +25,7 @@ namespace negocio
             comando = new SqlCommand();
         }
 
- 
+
         public void SetearConsulta(string consulta)
         {
             comando.CommandType = System.Data.CommandType.Text;
@@ -39,13 +40,13 @@ namespace negocio
             comando.Connection = conexion;
             try
             {
-            conexion.Open();
-            lector = comando.ExecuteReader();
+                conexion.Open();
+                lector = comando.ExecuteReader();
 
             }
             catch (Exception ex)
             {
-                
+
                 throw;
             }
         }
@@ -64,9 +65,15 @@ namespace negocio
 
                 throw ex;
             }
+        }
 
+        public void SetearParametro(string nombre, object valor) //para mandar los paramétros de Estilo y Edición(los id)
+        {
 
-
+            comando.Parameters.AddWithValue(nombre, valor);
+        
+        
+        
         }
 
         public void CerrarConexion()

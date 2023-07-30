@@ -34,7 +34,12 @@ namespace negocio
                     aux.Titulo = (string)lector["Titulo"];
                     aux.FechaLanzamiento = (DateTime)lector["Fecha de Lanzamiento"];
                     aux.CantCanciones = (int)lector["Cantidad de Canciones"];
+
+                    if (!(lector["UrlImagenTapa"] is DBNull)) { //si el urlImagen no es Null que intente leer la url  
+                    
                     aux.UrlImagenTapa = (string)lector["UrlImagenTapa"];
+                    
+                    }
                     aux.TipoEstilo = new Estilo();
                     aux.TipoEstilo.DescripcionEstilo = (string)lector["Estilo"]; // string por la descripción
                     aux.TipoEdicion = new Edicion();
@@ -60,7 +65,12 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("insert into DISCOS(Titulo, FechaLanzamiento, CantidadCanciones) values ('"+ discoAAgregar.Titulo + "'," + "'" + discoAAgregar.FechaLanzamiento.ToString("yyyy-MM-dd hh:mm:ss") + "',"+ discoAAgregar.CantCanciones+")");
+                datos.SetearConsulta("insert into DISCOS(Titulo, FechaLanzamiento, CantidadCanciones, IdEstilo, IdTipoEdicion, UrlImagenTapa) values ('" + discoAAgregar.Titulo + "'," + "'" + discoAAgregar.FechaLanzamiento.ToString("yyyy-MM-dd hh:mm:ss") + "'," + discoAAgregar.CantCanciones + ", @IdEstilo, @IdTipoEdicion, @UrlImagenTapa)");
+                datos.SetearParametro("@IdEstilo", discoAAgregar.TipoEstilo.IdEstilo);
+                datos.SetearParametro("@IdTipoEdicion", discoAAgregar.TipoEdicion.IdTipoEdicion);
+                datos.SetearParametro("@UrlImagenTapa", discoAAgregar.UrlImagenTapa);
+
+
                 datos.EjecutarAccion();
             }
             catch (Exception ex)
@@ -78,7 +88,7 @@ namespace negocio
 
         public void Modificar(Disco discoAmodificar) { }
     }
-
+      
 
          
        

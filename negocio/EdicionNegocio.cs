@@ -7,7 +7,7 @@ using dominio;
 
 namespace negocio
 {
-    internal class EdicionNegocio
+    public class EdicionNegocio
     {
         public List<Edicion> listar()
         {
@@ -22,7 +22,7 @@ namespace negocio
                 {
                     Edicion aux = new Edicion();
                     aux.IdTipoEdicion = (int)datos.Lector["Id"];
-                    aux.DescripcionTipoEdicion = (string)datos.Lector["Description"];
+                    aux.DescripcionTipoEdicion = (string)datos.Lector["Descripcion"];
 
                     listaedicion.Add(aux);
 
