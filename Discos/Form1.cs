@@ -14,6 +14,8 @@ namespace Discos
             InitializeComponent();
         }
 
+
+
         private void FormDiscos_Load(object sender, EventArgs e)
         {
             Cargar();
@@ -61,9 +63,19 @@ namespace Discos
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            frmAltaDisco altaDisco = new frmAltaDisco();
-            altaDisco.ShowDialog();
+            frmAltaDisco agregarDisco = new frmAltaDisco();
+            agregarDisco.ShowDialog();
             Cargar();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            Disco seleccionado;
+            seleccionado = (Disco)dgvDiscos.CurrentRow.DataBoundItem;
+            frmAltaDisco  modificarDisco = new frmAltaDisco(seleccionado);
+            modificarDisco.ShowDialog();
+            Cargar();
+
         }
     }
 }

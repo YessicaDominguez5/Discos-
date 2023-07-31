@@ -23,7 +23,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS;database=DISCOS_DB;integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Titulo, FechaLanzamiento as 'Fecha de Lanzamiento', CantidadCanciones as 'Cantidad de Canciones', UrlImagenTapa, E.descripcion as Estilo, T.Descripcion as 'Tipo de Edición'  from DISCOS D, ESTILOS E, TIPOSEDICION T where IdEstilo = E.Id AND IdTipoEdicion =T.Id";
+                comando.CommandText = "select IdDisco,Titulo, FechaLanzamiento as 'Fecha de Lanzamiento', CantidadCanciones as 'Cantidad de Canciones', UrlImagenTapa, E.descripcion as Estilo, T.Descripcion as 'Tipo de Edición', D.IdEstilo, D.IdTipoEdicion  from DISCOS D, ESTILOS E, TIPOSEDICION T where IdEstilo = E.Id AND IdTipoEdicion =T.Id\r\n";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -41,8 +41,11 @@ namespace negocio
                     
                     }
                     aux.TipoEstilo = new Estilo();
+                    aux.TipoEstilo.IdEstilo = (int)lector["IdEstilo"];
                     aux.TipoEstilo.DescripcionEstilo = (string)lector["Estilo"]; // string por la descripción
+
                     aux.TipoEdicion = new Edicion();
+                    aux.TipoEdicion.IdTipoEdicion = (int)lector["IdTipoEdicion"];
                     aux.TipoEdicion.DescripcionTipoEdicion = (string)lector["Tipo de Edición"];
 
                     listaDiscos.Add(aux);
@@ -86,7 +89,10 @@ namespace negocio
         
         } 
 
-        public void Modificar(Disco discoAmodificar) { }
+        public void Modificar(Disco discoAmodificar) { 
+        
+        
+        }
     }
       
 

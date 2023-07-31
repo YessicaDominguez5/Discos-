@@ -10,6 +10,8 @@ namespace dominio
 {
     public class Disco
     {
+        public int IdDisco { get; set; }
+
         [DisplayName("Título")]
         public string Titulo { get; set; }
 
@@ -26,5 +28,7 @@ namespace dominio
 
         [DisplayName("Tipo de Edición")]
         public Edicion TipoEdicion{ get; set; }
+
+       
     }
 }

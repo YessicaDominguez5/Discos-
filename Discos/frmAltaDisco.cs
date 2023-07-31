@@ -14,9 +14,16 @@ namespace Discos
 {
     public partial class frmAltaDisco : Form
     {
-        public frmAltaDisco()
+        private Disco disco = null;
+         public frmAltaDisco()
         {
             InitializeComponent();
+        }
+        public frmAltaDisco(Disco disco)
+        {
+            InitializeComponent();
+            this.disco = disco;
+            Text = "Modificar Disco"; // para que el text del formulario Modificar sea Modificar Disco.
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -26,21 +33,31 @@ namespace Discos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-            Disco nuevoDisco= new Disco();
+           
             DiscosNegocio negocio = new DiscosNegocio();
 
             try
             {
-                nuevoDisco.Titulo = tboxTitulo.Text;
-                nuevoDisco.FechaLanzamiento = DateTime.Parse(dtpFechaLanzamiento.Text);
-                nuevoDisco.CantCanciones = int.Parse(tboxCantCanciones.Text);
-                nuevoDisco.UrlImagenTapa = tboxUrlImagen.Text;
-                nuevoDisco.TipoEstilo = (Estilo)cboxEstilo.SelectedItem;
-                nuevoDisco.TipoEdicion = (Edicion)cboxEdicion.SelectedItem;
+                if(disco == null)
+                {
+
+                   Disco disco = new Disco();
+
+                }
+                disco.Titulo = tboxTitulo.Text;
+                disco.FechaLanzamiento = DateTime.Parse(dtpFechaLanzamiento.Text);
+                disco.CantCanciones = int.Parse(tboxCantCanciones.Text);
+                disco.UrlImagenTapa = tboxUrlImagen.Text;
+                disco.TipoEstilo = (Estilo)cboxEstilo.SelectedItem;
+                disco.TipoEdicion = (Edicion)cboxEdicion.SelectedItem;
                 
-                negocio.Agregar(nuevoDisco);
+                negocio.Agregar(disco);
 
                 MessageBox.Show("Agregado Exitosamente");
+
+                negocio.Modificar(disco);
+                MessageBox.Show("Modificado Exitosamente");
+                
                 this.Close();
 
             }
@@ -58,7 +75,24 @@ namespace Discos
             try
             {
                 cboxEstilo.DataSource = estiloNegocio.listar();
+                cboxEstilo.ValueMember= "IdEstilo";
+                cboxEstilo.DisplayMember = "DescripcionEstilo";
+               
                 cboxEdicion.DataSource = edicionNegoxcio.listar();
+                cboxEdicion.ValueMember = "IdTipoEdicion";
+                cboxEdicion.DisplayMember = "DescripcionTipoEdicion";
+
+                if(disco != null ) {// si se apreta modificar el formulario tiene que estar cargados con los datos del disco seleccionado
+
+                    tboxTitulo.Text = disco.Titulo;
+                    dtpFechaLanzamiento.Text = disco.FechaLanzamiento.ToString();
+                    tboxCantCanciones.Text = disco.CantCanciones.ToString();
+                    tboxUrlImagen.Text = disco.UrlImagenTapa;
+                    cargarImagen(disco.UrlImagenTapa);
+                    cboxEstilo.SelectedValue = disco.TipoEstilo.IdEstilo;
+                    cboxEdicion.SelectedValue = disco.TipoEdicion.IdTipoEdicion;
+                
+                }
             }
             catch (Exception ex)
             {
