@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using dominio;
+﻿using dominio;
 using negocio;
+using System;
+using System.Windows.Forms;
 
 namespace Discos
 {
     public partial class frmAltaDisco : Form
     {
         private Disco disco = null;
-         public frmAltaDisco()
+        public frmAltaDisco()
         {
             InitializeComponent();
         }
@@ -33,31 +26,43 @@ namespace Discos
 
         private void btnAceptar_Click(object sender, EventArgs e)
         {
-           
+
             DiscosNegocio negocio = new DiscosNegocio();
 
             try
             {
-                if(disco == null)
+                if (disco == null) // si queres agregar el disco esta en null
                 {
 
-                   Disco disco = new Disco();
+                    Disco disco = new Disco();
+
+                    disco.Titulo = tboxTitulo.Text;
+                    disco.FechaLanzamiento = DateTime.Parse(dtpFechaLanzamiento.Text);
+                    disco.CantCanciones = int.Parse(tboxCantCanciones.Text);
+                    disco.UrlImagenTapa = tboxUrlImagen.Text;
+                    disco.TipoEstilo = (Estilo)cboxEstilo.SelectedItem;
+                    disco.TipoEdicion = (Edicion)cboxEdicion.SelectedItem;
+
+                    negocio.Agregar(disco);
+
+                    MessageBox.Show("Agregado Exitosamente");
+                }
+                else if (disco.IdDisco != 0)
+                {
+
+                    disco.Titulo = tboxTitulo.Text;
+                    disco.FechaLanzamiento = DateTime.Parse(dtpFechaLanzamiento.Text);
+                    disco.CantCanciones = int.Parse(tboxCantCanciones.Text);
+                    disco.UrlImagenTapa = tboxUrlImagen.Text;
+                    disco.TipoEstilo = (Estilo)cboxEstilo.SelectedItem;
+                    disco.TipoEdicion = (Edicion)cboxEdicion.SelectedItem;
+
+                    negocio.Modificar(disco);
+                    MessageBox.Show("Modificado Exitosamente");
 
                 }
-                disco.Titulo = tboxTitulo.Text;
-                disco.FechaLanzamiento = DateTime.Parse(dtpFechaLanzamiento.Text);
-                disco.CantCanciones = int.Parse(tboxCantCanciones.Text);
-                disco.UrlImagenTapa = tboxUrlImagen.Text;
-                disco.TipoEstilo = (Estilo)cboxEstilo.SelectedItem;
-                disco.TipoEdicion = (Edicion)cboxEdicion.SelectedItem;
-                
-                negocio.Agregar(disco);
 
-                MessageBox.Show("Agregado Exitosamente");
 
-                negocio.Modificar(disco);
-                MessageBox.Show("Modificado Exitosamente");
-                
                 this.Close();
 
             }
@@ -70,19 +75,20 @@ namespace Discos
 
         private void frmAltaDisco_Load(object sender, EventArgs e)
         {
-             EstilosNegocio estiloNegocio = new EstilosNegocio();
-            EdicionNegocio edicionNegoxcio = new EdicionNegocio();  
+            EstilosNegocio estiloNegocio = new EstilosNegocio();
+            EdicionNegocio edicionNegoxcio = new EdicionNegocio();
             try
             {
                 cboxEstilo.DataSource = estiloNegocio.listar();
-                cboxEstilo.ValueMember= "IdEstilo";
+                cboxEstilo.ValueMember = "IdEstilo";
                 cboxEstilo.DisplayMember = "DescripcionEstilo";
-               
+
                 cboxEdicion.DataSource = edicionNegoxcio.listar();
                 cboxEdicion.ValueMember = "IdTipoEdicion";
                 cboxEdicion.DisplayMember = "DescripcionTipoEdicion";
 
-                if(disco != null ) {// si se apreta modificar el formulario tiene que estar cargados con los datos del disco seleccionado
+                if (disco != null)
+                {// si se apreta modificar el formulario tiene que estar cargados con los datos del disco seleccionado
 
                     tboxTitulo.Text = disco.Titulo;
                     dtpFechaLanzamiento.Text = disco.FechaLanzamiento.ToString();
@@ -91,7 +97,7 @@ namespace Discos
                     cargarImagen(disco.UrlImagenTapa);
                     cboxEstilo.SelectedValue = disco.TipoEstilo.IdEstilo;
                     cboxEdicion.SelectedValue = disco.TipoEdicion.IdTipoEdicion;
-                
+
                 }
             }
             catch (Exception ex)
