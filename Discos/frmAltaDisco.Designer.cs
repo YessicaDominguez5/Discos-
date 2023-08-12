@@ -43,6 +43,8 @@
             this.lblUrlImagen = new System.Windows.Forms.Label();
             this.tboxUrlImagen = new System.Windows.Forms.TextBox();
             this.pboxDiscoNuevo = new System.Windows.Forms.PictureBox();
+            this.btnImagen = new System.Windows.Forms.Button();
+            this.labelFormatoIncorrecto = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pboxDiscoNuevo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,6 +88,8 @@
             this.tboxCantCanciones.Name = "tboxCantCanciones";
             this.tboxCantCanciones.Size = new System.Drawing.Size(254, 20);
             this.tboxCantCanciones.TabIndex = 2;
+            this.tboxCantCanciones.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tboxCantCanciones_KeyPress);
+            this.tboxCantCanciones.Leave += new System.EventHandler(this.tboxCantCanciones_Leave);
             // 
             // dtpFechaLanzamiento
             // 
@@ -165,6 +169,7 @@
             this.tboxUrlImagen.Name = "tboxUrlImagen";
             this.tboxUrlImagen.Size = new System.Drawing.Size(254, 20);
             this.tboxUrlImagen.TabIndex = 3;
+          
             this.tboxUrlImagen.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // pboxDiscoNuevo
@@ -176,11 +181,35 @@
             this.pboxDiscoNuevo.TabIndex = 11;
             this.pboxDiscoNuevo.TabStop = false;
             // 
+            // btnImagen
+            // 
+            this.btnImagen.Location = new System.Drawing.Point(450, 180);
+            this.btnImagen.Name = "btnImagen";
+            this.btnImagen.Size = new System.Drawing.Size(32, 27);
+            this.btnImagen.TabIndex = 12;
+            this.btnImagen.Text = "->";
+            this.btnImagen.UseVisualStyleBackColor = true;
+            this.btnImagen.Click += new System.EventHandler(this.btnImagen_Click);
+            // 
+            // labelFormatoIncorrecto
+            // 
+            this.labelFormatoIncorrecto.AutoSize = true;
+            this.labelFormatoIncorrecto.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelFormatoIncorrecto.ForeColor = System.Drawing.Color.Red;
+            this.labelFormatoIncorrecto.Location = new System.Drawing.Point(436, 146);
+            this.labelFormatoIncorrecto.Name = "labelFormatoIncorrecto";
+            this.labelFormatoIncorrecto.Size = new System.Drawing.Size(13, 16);
+            this.labelFormatoIncorrecto.TabIndex = 13;
+            this.labelFormatoIncorrecto.Text = "*";
+            this.labelFormatoIncorrecto.Visible = false;
+            // 
             // frmAltaDisco
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(876, 477);
+            this.Controls.Add(this.labelFormatoIncorrecto);
+            this.Controls.Add(this.btnImagen);
             this.Controls.Add(this.pboxDiscoNuevo);
             this.Controls.Add(this.tboxUrlImagen);
             this.Controls.Add(this.lblUrlImagen);
@@ -224,5 +253,7 @@
         private System.Windows.Forms.Label lblUrlImagen;
         private System.Windows.Forms.TextBox tboxUrlImagen;
         private System.Windows.Forms.PictureBox pboxDiscoNuevo;
+        private System.Windows.Forms.Button btnImagen;
+        private System.Windows.Forms.Label labelFormatoIncorrecto;
     }
 }

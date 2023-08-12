@@ -29,6 +29,9 @@ namespace dominio
         [DisplayName("Tipo de Edición")]
         public Edicion TipoEdicion{ get; set; }
 
+        [DisplayName("Activo")]
+        public bool Activo { get; set; }
+
        
     }
 }

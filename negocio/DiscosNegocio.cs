@@ -23,7 +23,7 @@ namespace negocio
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS;database=DISCOS_DB;integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select D.Id,D.Titulo, D.FechaLanzamiento as 'Fecha de Lanzamiento', D.CantidadCanciones as 'Cantidad de Canciones', D.UrlImagenTapa, E.descripcion as Estilo, T.Descripcion as 'Tipo de Edición', D.IdEstilo, D.IdTipoEdicion  from DISCOS D, ESTILOS E, TIPOSEDICION T where D.IdEstilo = E.Id AND D.IdTipoEdicion =T.Id And D.Activo = 1";
+                comando.CommandText = "select D.Id,D.Titulo, D.FechaLanzamiento as 'Año de Lanzamiento', D.CantidadCanciones as 'Cantidad de Canciones', D.UrlImagenTapa, E.descripcion as Estilo, T.Descripcion as 'Tipo de Edición', D.IdEstilo, D.IdTipoEdicion  from DISCOS D, ESTILOS E, TIPOSEDICION T where D.IdEstilo = E.Id AND D.IdTipoEdicion =T.Id And D.Activo = 1";
                 comando.Connection = conexion;
                 conexion.Open();
                 lector = comando.ExecuteReader();
@@ -33,7 +33,7 @@ namespace negocio
                     Disco aux = new Disco();
                     aux.IdDisco = (int)lector["Id"];
                     aux.Titulo = (string)lector["Titulo"];
-                    aux.FechaLanzamiento = (DateTime)lector["Fecha de Lanzamiento"];
+                    aux.FechaLanzamiento = (DateTime)lector["Año de Lanzamiento"];
                     aux.CantCanciones = (int)lector["Cantidad de Canciones"];
 
                     if (!(lector["UrlImagenTapa"] is DBNull)) { //si el urlImagen no es Null que intente leer la url  
@@ -69,10 +69,11 @@ namespace negocio
             AccesoDatos datos = new AccesoDatos();
             try
             {
-                datos.SetearConsulta("insert into DISCOS(Titulo, FechaLanzamiento, CantidadCanciones, IdEstilo, IdTipoEdicion, UrlImagenTapa) values ('" + discoAAgregar.Titulo + "'," + "'" + discoAAgregar.FechaLanzamiento.ToString("yyyy-MM-dd hh:mm:ss") + "'," + discoAAgregar.CantCanciones + ", @IdEstilo, @IdTipoEdicion, @UrlImagenTapa)");
+                datos.SetearConsulta("insert into DISCOS(Titulo, FechaLanzamiento, CantidadCanciones, IdEstilo, IdTipoEdicion, UrlImagenTapa, Activo) values ('" + discoAAgregar.Titulo + "'," + "'" + discoAAgregar.FechaLanzamiento.ToString("yyyy-MM-dd hh:mm:ss") + "'," + discoAAgregar.CantCanciones + ", @IdEstilo, @IdTipoEdicion, @UrlImagenTapa, @Activo)");
                 datos.SetearParametro("@IdEstilo", discoAAgregar.TipoEstilo.IdEstilo);
                 datos.SetearParametro("@IdTipoEdicion", discoAAgregar.TipoEdicion.IdTipoEdicion);
                 datos.SetearParametro("@UrlImagenTapa", discoAAgregar.UrlImagenTapa);
+                datos.SetearParametro("@Activo", discoAAgregar.Activo);
 
 
                 datos.EjecutarAccion();
@@ -182,7 +183,7 @@ namespace negocio
 
                 switch (campo)
                 {
-                    case "Fecha de Lanzamiento":
+                    case "Año de Lanzamiento":
                         {
 
                             switch (criterio)

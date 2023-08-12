@@ -1,13 +1,16 @@
 ﻿using dominio;
 using negocio;
 using System;
+using System.IO;
 using System.Windows.Forms;
+using System.Configuration;
 
 namespace Discos
 {
     public partial class frmAltaDisco : Form
     {
         private Disco disco = null;
+        private OpenFileDialog archivo = null;
         public frmAltaDisco()
         {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace Discos
 
             try
             {
-                if (disco == null) // si queres agregar el disco esta en null
+                if (disco == null) // NUEVO DISCO (VACIO)
                 {
 
                     Disco disco = new Disco();
@@ -42,12 +45,13 @@ namespace Discos
                     disco.UrlImagenTapa = tboxUrlImagen.Text;
                     disco.TipoEstilo = (Estilo)cboxEstilo.SelectedItem;
                     disco.TipoEdicion = (Edicion)cboxEdicion.SelectedItem;
+                    disco.Activo = true;
 
                     negocio.Agregar(disco);
 
                     MessageBox.Show("Agregado Exitosamente");
                 }
-                else if (disco.IdDisco != 0)
+                else if (disco.IdDisco != 0) // MODIFICAR UN DISCO EXISTENTE
                 {
 
                     disco.Titulo = tboxTitulo.Text;
@@ -61,6 +65,16 @@ namespace Discos
                     MessageBox.Show("Modificado Exitosamente");
 
                 }
+
+                if(archivo != null && !(tboxUrlImagen.Text.ToUpper().Contains("HTTP")))
+                {
+
+                    File.Copy(archivo.FileName, ConfigurationManager.AppSettings["Discos-app"] + archivo.SafeFileName); //[key] + nombre del archivo 
+                                                                                                                        //guarda la imagen seleccionada en la carpeta 
+
+                }
+
+
 
 
                 this.Close();
@@ -82,10 +96,12 @@ namespace Discos
                 cboxEstilo.DataSource = estiloNegocio.listar();
                 cboxEstilo.ValueMember = "IdEstilo";
                 cboxEstilo.DisplayMember = "DescripcionEstilo";
+                cboxEstilo.SelectedIndex = -1;
 
                 cboxEdicion.DataSource = edicionNegoxcio.listar();
                 cboxEdicion.ValueMember = "IdTipoEdicion";
                 cboxEdicion.DisplayMember = "DescripcionTipoEdicion";
+                cboxEdicion.SelectedIndex = -1;
 
                 if (disco != null)
                 {// si se apreta modificar el formulario tiene que estar cargados con los datos del disco seleccionado
@@ -128,5 +144,65 @@ namespace Discos
             cargarImagen(tboxUrlImagen.Text);
 
         }
+         
+        private void btnImagen_Click(object sender, EventArgs e)
+        {
+            archivo = new OpenFileDialog(); //para levantar una imagen, abre una nueva ventana
+            archivo.Filter = "jpg|*.jpg;|png|*.png"; // tipo de archivo que quiero que permita traer
+            
+            if(archivo.ShowDialog() == DialogResult.OK) //si le diste ok en la imagen a cargar
+            {
+                tboxUrlImagen.Text = archivo.FileName; //guarda la ruta de la imagen
+                cargarImagen(archivo.FileName);
+
+
+                //guardar la imagen
+                //poner ruta en App config
+                //para leer esa ruta desde el App config -> Add References, Assemblies, System Configurations, Agregar using system.configuration  
+
+                //File.Copy(archivo.FileName, ConfigurationManager.AppSettings["Discos-app"] + archivo.SafeFileName); //[key] + nombre del archivo 
+                //guarda la imagen seleccionada en la carpeta 
+                // Se guarda al momento de Aceptar
+
+            }
+
+        }
+
+        private void tboxCantCanciones_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == '\b') //Permite ue borre
+            {
+                e.Handled = false; // permite modificación del TextBox
+                
+                labelFormatoIncorrecto.Visible = false;
+                return;
+            }
+            if (tboxCantCanciones.Text.Length > 2)
+            {
+                e.Handled = true;
+               
+                labelFormatoIncorrecto.Visible = true;
+            } else
+            {
+                if(!char.IsNumber(e.KeyChar))
+                {
+                    e.Handled = true; //No permite modificación del TextBox
+
+                    labelFormatoIncorrecto.Visible = true;
+                } else
+                {
+                    
+                    labelFormatoIncorrecto.Visible = false;
+                    e.Handled = false;
+                }
+            }
+        }
+
+        private void tboxCantCanciones_Leave(object sender, EventArgs e)
+        {
+            labelFormatoIncorrecto.Visible = false;
+        }
+
+      
     }
 }

@@ -20,7 +20,7 @@ namespace Discos
         {
             Cargar();
             cBoxCampo.Items.Add("Nombre");
-            cBoxCampo.Items.Add("Fecha de Lanzamiento");
+            cBoxCampo.Items.Add("Año de Lanzamiento");
             cBoxCampo.Items.Add("Estilo");
         }
 
@@ -144,11 +144,82 @@ namespace Discos
 
         }
 
+        private bool validarFiltro()
+        {
+            if(cBoxCampo.SelectedIndex < 0)
+            {
+                MessageBox.Show("Por favor seleccione el campo.");
+                return true; //campo sin completar
+            }
+            if(cboBoxCriterio.SelectedIndex < 0) 
+            {
+                MessageBox.Show("Por favor seleccione el criterio.");
+                return true; //criterio sin completar
+            
+            }
+            if(cBoxCampo.SelectedItem.ToString() == "Año de Lanzamiento")
+            {
+                if(string.IsNullOrEmpty(tBoxFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Complete con la información a filtrar, por favor");
+                    return true; // textBox vacío
+
+
+                }
+                foreach (var letra in tBoxFiltroAvanzado.Text)
+                {
+                    if (!char.IsNumber(letra)) 
+                    {
+                        MessageBox.Show("Ingrese solamente números, por favor.");
+                        return true; 
+                    }
+                }
+                return false;
+
+            }
+
+            if (cBoxCampo.SelectedItem.ToString() == "Estilo")
+            {
+                if (string.IsNullOrEmpty(tBoxFiltroAvanzado.Text))
+                {
+                    MessageBox.Show("Complete con la información a filtrar, por favor");
+                    return true; // textBox vacío
+
+
+                }
+                foreach (var letra in tBoxFiltroAvanzado.Text)
+                {
+                    if (!char.IsLetter(letra))
+                    {
+                        MessageBox.Show("Ingrese solamente letras, por favor.");
+                        return true;
+                    }
+                }
+                return false;
+
+            }
+
+            else
+            {
+                return false;
+
+            }
+
+
+        }
+
         private void btnBuscar_Click(object sender, EventArgs e)
         {
             DiscosNegocio negocio = new DiscosNegocio();
             try
             {
+                if(validarFiltro()) 
+                {
+
+                    return;
+                
+                }
+                
             string _Campo = cBoxCampo.SelectedItem.ToString();
             string _Criterio = cboBoxCriterio.SelectedItem.ToString();
             string _Filtro = tBoxFiltroAvanzado.Text;
@@ -193,7 +264,7 @@ namespace Discos
         {
             string opcion = cBoxCampo.SelectedItem.ToString();
 
-            if(opcion == "Fecha de Lanzamiento")
+            if(opcion == "Año de Lanzamiento")
             {
                 
                 cboBoxCriterio.Items.Clear();
